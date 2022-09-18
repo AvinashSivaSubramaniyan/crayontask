@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <title>User Registration Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <style>
+        .regform{
+            align-content: center;
+        }
+    </style>
+    
+
+</head>
+<body>
+        <div class="row">
+            <div class="container">
+                <form id="form">
+                    <div class="form-group">
+                        <label for="name"class="col-sm-2 col-form-label" >Name:</label>
+                        <input type="text" name="name" class="col-6 form-control" id="name" required> 
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-sm-2 col-form-label">Email:</label>
+                        <input type="email" name="email" id="email" class="col-6 form-control" pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobileNumber" class="col-sm-2 col-form-label">Mobile Number:</label>
+                        <input type="tel" name="number" id="number" maxlength="10" class="col-6 form-control" required> 
+                    </div>
+                    <p >Languages Known:</p> 
+                    <span id="msg"></span>
+                    <div class="checkbox" id="language" >
+                        <input type="checkbox" id="tamil" name="tamil" value="Tamil" >
+                        <label for="tamil">Tamil</label><br>
+                        <input type="checkbox" id="english" name="english" value="English">
+                        <label for="english">English</label><br>
+                        <input type="checkbox" id="hindi" name="hindi" value="Hindi" >
+                        <label for="hindi">Hindi</label><br> 
+                    </div>
+                    <div class="gender" id="gender" >
+                        <p>Select your gender:</p> 
+                        <input type="radio" id="male" name="gender" value="Male" required>
+                        <label for="male">Male</label><br>
+                        <input type="radio" id="female" name="gender" value="Female" >
+                        <label for="female">Female</label><br>
+                        
+                    </div>
+                    
+                    <p>Select your Country:</p>
+                    <select name="country" id="country" required>
+                        <option value="">Select.....</option>
+                        <option value="india">India</option>
+                        <option value="srilanka">Sri Lanka</option>
+                        <option value="usa">USA</option>
+                        <option value="uk">UK</option>
+                        <option value="australia">Australia</option>
+                    </select> <br> <br>
+                    <input type="submit" value="submit">
+                </form>
+        
+            </div>
+            <div class="container">
+                <div class="table-responsive-sm-md-lg">
+                    <table id="table" class="table table-responsive-sm-md-lg" style="border-collapse: collapse;" border="1">
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile Number</th>
+                        <th>Languages</th>
+                        <th>Gender</th>
+                        <th>Country</th>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    
+
+    
+        
+
+</body>
+
+
+<script>
+
+// if(document.getElementById('language').checked){}else{document.getElementById('msg').textContent="Not Selected"}
+
+var form = document.getElementById('form')
+
+form.addEventListener('submit',function(event){
+  event.preventDefault();
+  
+  
+  var name = document.getElementById("name").value;
+  console.log(name)
+  var email = document.getElementById("email").value;
+  console.log(email)
+  var number = document.getElementById("number").value;
+  console.log(number)
+  var hindi = document.getElementById("hindi");
+  var tamil = document.getElementById("tamil");
+  var english = document.getElementById("english");
+
+  var res="";
+  if(tamil.checked== true){
+      var tam = document.getElementById("tamil").value;
+      res = tam ;
+      if(english.checked== true){
+      var eng = document.getElementById("english").value;
+      res = res +","+eng;
+  }
+  if(hindi.checked== true){
+      var hin = document.getElementById("hindi").value;
+      res = res+","+hin;
+  }
+  }
+  
+  
+  console.log(res)
+
+  
+  var male = $("input[type='radio'][name='gender']:checked").val();
+  console.log(male)
+  
+  var country = document.getElementById("country").value;
+  console.log(country)
+  
+
+  
+  $('#table').append(
+    "<tr><td>"+name+"</td>"+
+    "<td>"+email+"</td>"+
+    "<td>"+number+"</td>"+
+    "<td>"+res+"</td>"+
+    "<td>"+male+"</td>"+
+    "<td>"+country+"</td></tr>"
+  )
+  
+})
+
+
+</script>
+</html>

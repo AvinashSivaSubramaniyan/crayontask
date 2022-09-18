@@ -1,0 +1,19 @@
+.main{
+    border-radius: 5px;
+    background-color: #EEEEEE;
+  }
+  
+  .para{
+    border-bottom: 1px solid  #EDEDED;
+
+  }
+
+  .btn{
+    border: 1px solid  #EDEDED;
+    background-color:#E9E9E9;
+    border-radius:5px ;
+  }
+  .btng{
+    border-radius: 5px;
+    padding: 7px 15px;
+  }
